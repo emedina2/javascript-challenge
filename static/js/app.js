@@ -16,5 +16,12 @@ dateField.on("change", ()=>{
 button.on("click", ()=>{
 console.log("Filter button clicked")
 console.log(`The entered date is ${enteredDate}.`)
+var alienSightings = data.filter(findAliens)
+console.log(alienSightings)
 });
+
+//create function to filter data
+function findAliens(date) {
+    return date.datetime === enteredDate;
+};
 
