@@ -9,7 +9,7 @@ var dateField = d3.select("#datetime");
 var enteredDate;
 var sightingTable = d3.select("tbody");
 var cityDropDown = d3.select("city");
-var cityList;
+
 
 dateField.on("change", ()=>{
     enteredDate = d3.event.target.value
@@ -49,3 +49,21 @@ function sightingData(sightings){
 }
 
 //create list of cities for drop down menu
+var allCities = [];
+for (var s = 0; s < data.length; s++) {
+    getCities(data[s])
+};
+console.log(allCities)
+   
+var cityList = allCities.filter(filteredCities);
+console.log(cityList)
+
+function getCities (c){
+    allCities.push(c.city)
+};
+
+function filteredCities (v, i, a) {
+    return a.indexOf(v) === i;
+};
+
+//cityList.forEach(cityDropDown.append('li').text())
