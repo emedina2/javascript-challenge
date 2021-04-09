@@ -7,7 +7,10 @@ var tableData = data;
 var button = d3.select("#filter-btn");
 var dateField = d3.select("#datetime");
 var enteredDate;
-var sightingTable = d3.select("tbody")
+var sightingTable = d3.select("tbody");
+var cityDropDown = d3.select("city");
+var cityList;
+
 dateField.on("change", ()=>{
     enteredDate = d3.event.target.value
     console.log(enteredDate);
@@ -32,7 +35,7 @@ function findAliens(date) {
     return date.datetime === enteredDate;
 };
 
-//function to loop through data & add it to page
+//function to append data to table
 function sightingData(sightings){
     
     sightingTable.append("tr")
@@ -43,7 +46,6 @@ function sightingData(sightings){
     sightingTable.append("td").text(sightings.shape)
     sightingTable.append("td").text(sightings.durationMinutes)
     sightingTable.append("td").text(sightings.comments)
-
-
-
 }
+
+//create list of cities for drop down menu
